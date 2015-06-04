@@ -150,7 +150,8 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
             { src: '#{revealjsdir}/lib/js/classList.js', condition: function() { return !document.body.classList; } },
             { src: '#{revealjsdir}/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
             { src: '#{revealjsdir}/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            #{(attr? 'source-highlighter', 'highlightjs') ? "{ src: '#{revealjsdir}/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }," : nil}
+            { src: "highlightjs-cypher/javascripts/cypher.js" },
+            #{(attr? 'source-highlighter', 'highlightjs') ? "{ src: '#{revealjsdir}/plugin/highlight/highlight.js', async: true, callback: function() { hljs.registerLanguage('cypher', cypher); hljs.initHighlightingOnLoad(); } }," : nil}
             { src: '#{revealjsdir}/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
             { src: '#{revealjsdir}/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
